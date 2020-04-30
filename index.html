@@ -1,0 +1,1031 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Luppa Backend</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen-a1ce949a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-bccf8c07.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-c5541673.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-1e815a84.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#how-it-works" class="toc-h2 toc-link" data-title="How it works?">How it works?</a>
+                  </li>
+                  <li>
+                    <a href="#creating-a-new-user" class="toc-h2 toc-link" data-title="Creating a new user">Creating a new user</a>
+                  </li>
+                  <li>
+                    <a href="#logging-in" class="toc-h2 toc-link" data-title="Logging in">Logging in</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#frauds" class="toc-h1 toc-link" data-title="Frauds">Frauds</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-frauds" class="toc-h2 toc-link" data-title="Get All Frauds">Get All Frauds</a>
+                  </li>
+                  <li>
+                    <a href="#create-fraud" class="toc-h2 toc-link" data-title="Create Fraud">Create Fraud</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#loans" class="toc-h1 toc-link" data-title="Loans">Loans</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-loans" class="toc-h2 toc-link" data-title="Get All Loans">Get All Loans</a>
+                  </li>
+                  <li>
+                    <a href="#create-loan" class="toc-h2 toc-link" data-title="Create Loan">Create Loan</a>
+                  </li>
+                  <li>
+                    <a href="#edit-loan" class="toc-h2 toc-link" data-title="Edit Loan">Edit Loan</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#loandocuments" class="toc-h1 toc-link" data-title="LoanDocuments">LoanDocuments</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#schema" class="toc-h2 toc-link" data-title="Schema">Schema</a>
+                  </li>
+                  <li>
+                    <a href="#about" class="toc-h2 toc-link" data-title="About">About</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#loandocumentfrauds" class="toc-h1 toc-link" data-title="LoanDocumentFrauds">LoanDocumentFrauds</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#schema-2" class="toc-h2 toc-link" data-title="Schema">Schema</a>
+                  </li>
+                  <li>
+                    <a href="#about-2" class="toc-h2 toc-link" data-title="About">About</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#analysis" class="toc-h1 toc-link" data-title="Analysis">Analysis</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#creating-a-new-analysis" class="toc-h2 toc-link" data-title="Creating a new analysis">Creating a new analysis</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#missing-points" class="toc-h1 toc-link" data-title="Missing points">Missing points</a>
+          </li>
+          <li>
+            <a href="#environment" class="toc-h1 toc-link" data-title="Environment">Environment</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#about-3" class="toc-h2 toc-link" data-title="About">About</a>
+                  </li>
+                  <li>
+                    <a href="#staging" class="toc-h2 toc-link" data-title="Staging">Staging</a>
+                  </li>
+                  <li>
+                    <a href="#production" class="toc-h2 toc-link" data-title="Production">Production</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Luppa Backend API! You can use our API to access Luppa Backend API endpoints, which can get information on various loans, frauds, documents, etc, in our database.</p>
+
+<p>We have language bindings in Shell! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+
+<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>.</p>
+<h1 id='authentication'>Authentication</h1><h2 id='how-it-works'>How it works?</h2>
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"http://luppa-ai-production.herokuapp.com"</span>
+  -H <span class="s2">"Authorization: Bearer TOKEN_HERE"</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>TOKEN_HERE</code> with your JWT key.</p>
+</blockquote>
+
+<p>We use <a href="https://jwt.io/">JWT</a> as Authorization protocol to allow access to the API.</p>
+
+<p>You can get a valid Authorization key logging in our API with a valid user registered in our application.</p>
+
+<p>Luppa Backend expects for the Authorization key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Authorization: Bearer TOKEN_HERE</code></p>
+
+<aside class="notice">
+You must replace <code>TOKEN_HERE</code> with your personal JWT key.
+</aside>
+<h2 id='creating-a-new-user'>Creating a new user</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  --request POST <span class="se">\</span>
+  --data <span class="s1">'{
+  "user": {
+    "username": "luizhrqas@gmail.com",
+    "password": "your_password_here",
+    "name": "Luiz Almeida"
+  }
+}'</span> <span class="se">\</span>
+  <span class="s2">"http://luppa-ai-production.herokuapp.com/users"</span>
+</code></pre>
+<blockquote>
+<p>It contains some required fields to work:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"luizhrqas@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your_password_here"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luiz Almeida"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"$oid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaa9b2da7daa30004aeea1f"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luiz Almeida"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"password_digest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$2a$12$InIf95i/jpkeO4cGB22RV.XP8tfqdauooMNRbcMjOiCOb1sfeOYD."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"luizhrqas@gmail.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://luppa-ai-production.herokuapp.com/users</code></p>
+
+<p>This endpoint will allow you to create a new user:</p>
+<h2 id='logging-in'>Logging in</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  --request POST <span class="se">\</span>
+  --data <span class="s1">'{
+    "user": {
+        "username": "luizhrqas@gmail.com",
+        "password": "your_password_here"
+    }
+}'</span> <span class="se">\</span>
+  <span class="s2">"http://luppa-ai-production.herokuapp.com/authentication"</span>
+</code></pre>
+<blockquote>
+<p>It contains some required fields to work:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"luizhrqas@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your_password_here"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns a JSON Web Token like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="s2">"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imx1aXpocnFhc0BnbWFpbC5jb20iLCJleHAiOjE1ODgwODUzNjZ9.dYvgspmKQCSYGCGnyai5G69MYLobhrr1yHYTUwBhQxw"</span><span class="w">
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST http://luppa-ai-production.herokuapp.com/authentication</code></p>
+
+<p>This endpoint will allow you to log in our application:</p>
+<h1 id='frauds'>Frauds</h1><h2 id='get-all-frauds'>Get All Frauds</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imx1aXpocnFhc0BnbWFpbC5jb20iLCJleHAiOjE1ODgwODUzNjZ9.dYvgspmKQCSYGCGnyai5G69MYLobhrr1yHYTUwBhQxw"</span> <span class="se">\</span>
+  --request GET <span class="se">\</span>
+  <span class="s2">"http://luppa-ai-production.herokuapp.com/frauds"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"$oid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ea71ee0855c4c7d875dd9b6"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"backend_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXEMPLO_BACKEND"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Exemplo"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://luppa-ai-production.herokuapp.com/frauds</code></p>
+
+<p>This endpoint will retrieve all generic frauds available.</p>
+
+<p>It can be used as filter for the <strong>autocomplete</strong> feature in front-end. See the query parameters below:</p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>by_label</td>
+<td>&quot;&quot;</td>
+<td>Filter frauds by the <code>label</code> attribute. This filter works similarly to SQL &quot;WHERE LIKE &quot;%VALUE%&quot;.</td>
+</tr>
+<tr>
+<td>by_backend_label</td>
+<td>&quot;&quot;</td>
+<td>Filter frauds by the <code>backend_label</code> attribute. This filter works similarly to SQL &quot;WHERE LIKE &quot;%VALUE%&quot;.</td>
+</tr>
+</tbody></table>
+<h2 id='create-fraud'>Create Fraud</h2>
+<p>Actually, it is only possible to create new generic frauds, sending them on the <a href="#creating-a-new-analysis">Creating a new analysis</a> endpoint.</p>
+<h1 id='loans'>Loans</h1><h2 id='get-all-loans'>Get All Loans</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imx1aXpocnFhc0BnbWFpbC5jb20iLCJleHAiOjE1ODgwODUzNjZ9.dYvgspmKQCSYGCGnyai5G69MYLobhrr1yHYTUwBhQxw"</span> <span class="se">\</span>
+  --request GET <span class="se">\</span>
+  <span class="s2">"http://luppa-ai-production.herokuapp.com/loans"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"$oid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ea696733832e276318aaae0"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"analysis"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"harpia"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"luppa"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"has_been_analyzed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"suspected_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Permissão"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Numero do RG"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Assinatura"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"frauds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"loan_document_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fraud_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">]</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"dates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"emission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"received"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPF"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RG"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"external_loan_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"loan_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET http://luppa-ai-production.herokuapp.com/loans</code></p>
+
+<p>This endpoint will retrieve all loans available.</p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>by_full_name</td>
+<td>&quot;&quot;</td>
+<td>Filter loans by the <code>full_name</code> attribute. This filter works similarly to SQL &quot;WHERE LIKE &quot;%VALUE%&quot;.</td>
+</tr>
+</tbody></table>
+<h2 id='create-loan'>Create Loan</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imx1aXpocnFhc0BnbWFpbC5jb20iLCJleHAiOjE1ODgwODUzNjZ9.dYvgspmKQCSYGCGnyai5G69MYLobhrr1yHYTUwBhQxw"</span> <span class="se">\</span>
+  --request POST <span class="se">\</span>
+  <span class="s2">"http://luppa-ai-production.herokuapp.com/loans"</span>
+</code></pre>
+<blockquote>
+<p>It contains some required fields to work:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"loan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"external_loan_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"loan_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luiz Almeida"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPF"</span><span class="p">,</span><span class="w"> </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNH"</span><span class="p">,</span><span class="w"> </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"analysis"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"harpia"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"luppa"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"has_been_analyzed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"suspected_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Permissão"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Numero do RG"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Assinatura"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"frauds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"loan_document_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fraud_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">]</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"dates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"emission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"received"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"$oid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"analysis"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"harpia"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"luppa"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"has_been_analyzed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"suspected_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Permissão"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Numero do RG"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Assinatura"</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"frauds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"loan_document_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fraud_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"dates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"emission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"received"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPF"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"external_loan_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luiz Almeida"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"loan_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST http://luppa-ai-production.herokuapp.com/loans</code></p>
+
+<p>This endpoint will allow you to create a new loan:</p>
+<h2 id='edit-loan'>Edit Loan</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  --header <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imx1aXpocnFhc0BnbWFpbC5jb20iLCJleHAiOjE1ODgwODUzNjZ9.dYvgspmKQCSYGCGnyai5G69MYLobhrr1yHYTUwBhQxw"</span> <span class="se">\</span>
+  --request PATCH <span class="se">\</span>
+  <span class="s2">"http://luppa-ai-production.herokuapp.com/loans/5eaac907855c4c73cc106506"</span>
+</code></pre>
+<blockquote>
+<p>It contains some optional fields to work:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"loan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"external_loan_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"loan_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luiz Almeida"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPF"</span><span class="p">,</span><span class="w"> </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNH"</span><span class="p">,</span><span class="w"> </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"analysis"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"harpia"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"luppa"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"has_been_analyzed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"suspected_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Permissão"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Numero do RG"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Assinatura"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"frauds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"loan_document_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fraud_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">]</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"dates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"emission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"received"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"$oid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"analysis"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"harpia"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"luppa"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"has_been_analyzed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"suspected_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Permissão"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Numero do RG"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Assinatura"</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"frauds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"loan_document_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fraud_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000+00:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"dates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"emission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"received"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPF"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"external_loan_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luiz Almeida"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"loan_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-6'>HTTP Request</h3>
+<p><code>PATCH http://luppa-ai-production.herokuapp.com/loans/:id</code></p>
+
+<p>This endpoint will allow you to edit a existing loan.</p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>0</td>
+<td>A valid ID for a existing loan.</td>
+</tr>
+</tbody></table>
+<h1 id='loandocuments'>LoanDocuments</h1><h2 id='schema'>Schema</h2>
+<p>This is the actual structure for a existing <code>LoanDocument</code>:</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNH"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"back"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://&lt;network&gt;/public/91002910921.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNH"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emission_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"birth_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"birth_place"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GUARULHOS - SP"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mother_full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem Ipsun"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"father_full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem Ipsun"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='about'>About</h2>
+<p>The <code>LoanDocument</code> entity is a children for <a href="#loans">Loans</a>.</p>
+
+<p>Actually it is not possible to create new loan documents directly.</p>
+
+<p>To create a new loan document, you must send them on the <a href="#creating-a-new-analysis">Creating a new analysis</a> endpoint.</p>
+<h1 id='loandocumentfrauds'>LoanDocumentFrauds</h1><h2 id='schema-2'>Schema</h2>
+<p>This is the actual structure for a existing <code>LoanDocumentFrauds</code>:</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"loan_document_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fraud_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='about-2'>About</h2>
+<p>The <code>LoanDocumentFraud</code> entity is a children for <a href="#loan-documents">LoanDocument</a>.</p>
+
+<p>Actually it is not possible to create new loan documents directly.</p>
+
+<p>To create a new fraud in a loan document, you must send them on the <a href="#creating-a-new-analysis">Creating a new analysis</a> endpoint.</p>
+<h1 id='analysis'>Analysis</h1><h2 id='creating-a-new-analysis'>Creating a new analysis</h2><h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST http://luppa-ai-production.herokuapp.com/analysis</code></p>
+
+<p>This endpoint will allow you to submit a new analysis.</p>
+
+<p>The analysis must provide a existing loan id in the <code>loan_id</code> attribute.</p>
+<h3 id='required-fields'>Required fields</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>loan_id</td>
+<td>&quot;&quot;</td>
+<td>The existing loan who the analysis refers to.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>false</td>
+<td>Actual status for the analysis. <code>false</code>: invalid document. <code>true</code>: Valid document.</td>
+</tr>
+<tr>
+<td>frauds.id</td>
+<td>null</td>
+<td>You must provide a ID for the fraud. You can use a integer auto-increment as ID for each fraud. This ID can be used as reference for the <code>comments</code> array.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-fields'>Optional fields</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>frauds.points</td>
+<td>null</td>
+<td>Coordinates for the fraud.</td>
+</tr>
+<tr>
+<td>frauds.backend_label</td>
+<td>null</td>
+<td>If this fraud belongs to a existing generic fraud, you must provide the <code>backend_label</code> for it. If the <code>backend_label</code> doesn&#39;t exists, it will create a new generic fraud using the <code>backend_label</code> and the <code>label</code> attribute values.</td>
+</tr>
+<tr>
+<td>comments.fraud_id</td>
+<td>null</td>
+<td>Persist a relation between the comment and a existing fraud in the <code>frauds</code> array.</td>
+</tr>
+</tbody></table>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"loan_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Estatus</span><span class="w"> </span><span class="err">da</span><span class="w"> </span><span class="err">análise</span><span class="w"> </span><span class="err">da</span><span class="w"> </span><span class="err">cynthia</span><span class="w"> </span><span class="p">[</span><span class="kc">false</span><span class="w"> </span><span class="err">-</span><span class="w"> </span><span class="err">doc.</span><span class="w"> </span><span class="err">falso</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">-</span><span class="w"> </span><span class="err">doc.</span><span class="w"> </span><span class="err">verdadeiro</span><span class="p">]</span><span class="w">
+  </span><span class="s2">"frauds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loan_document_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alinhamento da permisão"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"backend_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PERMISSION_ALIGNMENT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loan_document_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fonte Inválida"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"backend_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVALID_FONT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loan_document_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Assinatura Inválida"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"backend_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVALID_SIGNATURE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"fraud_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5eaac907855c4c73cc106506"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-27T03:00:00.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='missing-points'>Missing points</h1>
+<ol>
+<li>The API must provide a endpoint to create and delete documents for a existing Loan (<code>LoanDocument</code> entity explained above).</li>
+<li>We need to define all the business logic inside the analysis endpoint (specially about the behavior in <code>frauds</code> and <code>comments</code> arrays).</li>
+<li>The API must provide the analysis endpoint (it still in development).</li>
+<li>We need to define if we&#39;ll need DELETE endpoints, to delete any existing content for any entity.</li>
+</ol>
+<h1 id='environment'>Environment</h1><h2 id='about-3'>About</h2>
+<p>The Luppa backend is a typical Ruby on Rails API application.</p>
+
+<p>The source code is available <a href="#">here</a>.</p>
+
+<p>You must have Ruby 2.7+ and Rails 6+ installed in your system.</p>
+
+<p>You can use the <code>Docker</code> environment available in the source code.</p>
+
+<p>You must copy and paste the <code>.env.example</code> to the <code>.env</code> file, with all environment variables filled with valid content.</p>
+
+<p>Actually, we are using the MongoDB as database. You must provide the <code>MONGODB_URI</code> connection string in the <code>.env</code> file.</p>
+<h2 id='staging'>Staging</h2>
+<p>We have a staging environment available in Heroku. It can be used for the front-end development environment.</p>
+
+<p>We are using the MongoDB instance available from the Heroku Addons.</p>
+
+<p>The application is hosted in the @lhas username. Ideally, in the future, it should be migrated to a DOD Vision Heroku account.</p>
+
+<p>We are using a free dyno for this environment, so, probably in the first request in a 60 minutes range, the application will be sleeping (idle).</p>
+
+<p>The next request after the application has been waked up will be faster than the first request.</p>
+<h2 id='production'>Production</h2>
+<p>The production environment will be deployed locally in the Azure cloud service from the client.</p>
+
+<p>The client will provide a MongoDB instance for us.</p>
+
+<p>The client will use the Docker environment available in the source code to deploy and start the backend.</p>
+<h1 id='errors'>Errors</h1>
+<aside class="notice">
+This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+</aside>
+
+<p>The Kittn API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified kitten could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone -- The kitten requested has been removed from our servers.</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&#39;m a teapot.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
