@@ -1,0 +1,695 @@
+---
+title: Luppa Backend
+
+language_tabs: # must be one of https://git.io/vQNgJ
+  - shell
+
+toc_footers:
+  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+
+includes:
+  - errors
+
+search: true
+---
+
+# Introduction
+
+Welcome to the Luppa Backend API! You can use our API to access Luppa Backend API endpoints, which can get information on various loans, frauds, documents, etc, in our database.
+
+We have language bindings in Shell! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+
+This example API documentation page was created with [Slate](https://github.com/slatedocs/slate).
+
+# Authentication
+
+## How it works?
+
+> To authorize, use this code:
+
+```shell
+# With shell, you can just pass the correct header with each request
+curl "<%= config[:endpoint] %>"
+  -H "Authorization: Bearer TOKEN_HERE"
+```
+
+> Make sure to replace `TOKEN_HERE` with your JWT key.
+
+We use [JWT](https://jwt.io/) as Authorization protocol to allow access to the API.
+
+You can get a valid Authorization key logging in our API with a valid user registered in our application.
+
+Luppa Backend expects for the Authorization key to be included in all API requests to the server in a header that looks like the following:
+
+`Authorization: Bearer TOKEN_HERE`
+
+<aside class="notice">
+You must replace <code>TOKEN_HERE</code> with your personal JWT key.
+</aside>
+
+## Creating a new user
+
+```shell
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{
+  "user": {
+    "username": "luizhrqas@gmail.com",
+    "password": "your_password_here",
+    "name": "Luiz Almeida"
+  }
+}' \
+  "<%= config[:endpoint] %>/users"
+```
+
+> It contains some required fields to work:
+
+```json
+{
+  "user": {
+    "username": "luizhrqas@gmail.com",
+    "password": "your_password_here",
+    "name": "Luiz Almeida"
+  }
+}
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "_id": {
+    "$oid": "5eaa9b2da7daa30004aeea1f"
+  },
+  "name": "Luiz Almeida",
+  "password_digest": "$2a$12$InIf95i/jpkeO4cGB22RV.XP8tfqdauooMNRbcMjOiCOb1sfeOYD.",
+  "username": "luizhrqas@gmail.com"
+}
+```
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/users`
+
+This endpoint will allow you to create a new user:
+
+## Logging in
+
+```shell
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{
+	"user": {
+		"username": "luizhrqas@gmail.com",
+		"password": "your_password_here"
+	}
+}' \
+  "<%= config[:endpoint] %>/authentication"
+```
+
+> It contains some required fields to work:
+
+```json
+{
+  "user": {
+    "username": "luizhrqas@gmail.com",
+    "password": "your_password_here"
+  }
+}
+```
+
+> The above command returns a JSON Web Token like this:
+
+```json
+"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imx1aXpocnFhc0BnbWFpbC5jb20iLCJleHAiOjE1ODgwODUzNjZ9.dYvgspmKQCSYGCGnyai5G69MYLobhrr1yHYTUwBhQxw"
+```
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/authentication`
+
+This endpoint will allow you to log in our application:
+
+# Frauds
+
+## Get All Frauds
+
+```shell
+curl --header "Content-Type: application/json" \
+  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imx1aXpocnFhc0BnbWFpbC5jb20iLCJleHAiOjE1ODgwODUzNjZ9.dYvgspmKQCSYGCGnyai5G69MYLobhrr1yHYTUwBhQxw" \
+  --request GET \
+  "<%= config[:endpoint] %>/frauds"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "_id": {
+      "$oid": "5ea71ee0855c4c7d875dd9b6"
+    },
+    "backend_label": "EXEMPLO_BACKEND",
+    "label": "Exemplo"
+  }
+]
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/frauds`
+
+This endpoint will retrieve all generic frauds available.
+
+It can be used as filter for the **autocomplete** feature in front-end. See the query parameters below:
+
+### Query Parameters
+
+| Parameter        | Default | Description                                                                                               |
+| ---------------- | ------- | --------------------------------------------------------------------------------------------------------- |
+| by_label         | ""      | Filter frauds by the `label` attribute. This filter works similarly to SQL "WHERE LIKE "%VALUE%".         |
+| by_backend_label | ""      | Filter frauds by the `backend_label` attribute. This filter works similarly to SQL "WHERE LIKE "%VALUE%". |
+
+## Create Fraud
+
+Actually, it is only possible to create new generic frauds, sending them on the [Creating a new analysis](#creating-a-new-analysis) endpoint.
+
+# Loans
+
+## Get All Loans
+
+```shell
+curl --header "Content-Type: application/json" \
+  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imx1aXpocnFhc0BnbWFpbC5jb20iLCJleHAiOjE1ODgwODUzNjZ9.dYvgspmKQCSYGCGnyai5G69MYLobhrr1yHYTUwBhQxw" \
+  --request GET \
+  "<%= config[:endpoint] %>/loans"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "_id": {
+      "$oid": "5ea696733832e276318aaae0"
+    },
+    "analysis": {
+      "harpia": {
+        "status": false,
+        "date": "2020-04-27T03:00:00.000+00:00"
+      },
+      "luppa": {
+        "has_been_analyzed": true,
+        "status": "high",
+        "score": "15.0",
+        "date": "2020-04-27T03:00:00.000+00:00",
+        "suspected_fields": ["Permissão", "Numero do RG", "Assinatura"],
+        "frauds": [
+          {
+            "id": "1",
+            "loan_document_id": "1",
+            "fraud_id": "1",
+            "score": 99,
+            "points": [
+              [0, 1],
+              [1, 1],
+              [100, 100]
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "id": "1",
+            "user_id": "1",
+            "comment": "lorem ipsum",
+            "created_at": "2020-04-27T03:00:00.000+00:00"
+          }
+        ]
+      }
+    },
+    "dates": {
+      "emission": "2020-04-27T03:00:00.000Z",
+      "received": "2020-04-27T03:00:00.000Z"
+    },
+    "documents": [
+      {
+        "number": "000000001",
+        "type": "CPF"
+      },
+      {
+        "number": "000000000",
+        "type": "RG"
+      }
+    ],
+    "external_loan_id": "123",
+    "full_name": "John Doe",
+    "loan_type": "pending"
+  }
+]
+```
+
+### HTTP Request
+
+`GET <%= config[:endpoint] %>/loans`
+
+This endpoint will retrieve all loans available.
+
+### Query Parameters
+
+| Parameter    | Default | Description                                                                                          |
+| ------------ | ------- | ---------------------------------------------------------------------------------------------------- |
+| by_full_name | ""      | Filter loans by the `full_name` attribute. This filter works similarly to SQL "WHERE LIKE "%VALUE%". |
+
+## Create Loan
+
+```shell
+curl --header "Content-Type: application/json" \
+  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imx1aXpocnFhc0BnbWFpbC5jb20iLCJleHAiOjE1ODgwODUzNjZ9.dYvgspmKQCSYGCGnyai5G69MYLobhrr1yHYTUwBhQxw" \
+  --request POST \
+  "<%= config[:endpoint] %>/loans"
+```
+
+> It contains some required fields to work:
+
+```json
+{
+  "loan": {
+    "external_loan_id": "123456",
+    "loan_type": "pending",
+    "full_name": "Luiz Almeida",
+    "documents": [
+      { "type": "CPF", "number": "123456789" },
+      { "type": "CNH", "number": "123" }
+    ],
+    "analysis": {
+      "harpia": {
+        "status": false,
+        "date": "2020-04-27T03:00:00.000+00:00"
+      },
+      "luppa": {
+        "has_been_analyzed": true,
+        "status": "high",
+        "score": "15.0",
+        "date": "2020-04-27T03:00:00.000+00:00",
+        "suspected_fields": ["Permissão", "Numero do RG", "Assinatura"],
+        "frauds": [
+          {
+            "id": "1",
+            "loan_document_id": "1",
+            "fraud_id": "1",
+            "score": 99,
+            "points": [
+              [0, 1],
+              [1, 1],
+              [100, 100]
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "id": "1",
+            "user_id": "1",
+            "comment": "lorem ipsum",
+            "created_at": "2020-04-27T03:00:00.000+00:00"
+          }
+        ]
+      }
+    },
+    "dates": {
+      "emission": "2020-04-27T03:00:00.000Z",
+      "received": "2020-04-27T03:00:00.000Z"
+    }
+  }
+}
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "_id": {
+    "$oid": "5eaac907855c4c73cc106506"
+  },
+  "analysis": {
+    "harpia": {
+      "status": false,
+      "date": "2020-04-27T03:00:00.000+00:00"
+    },
+    "luppa": {
+      "has_been_analyzed": true,
+      "status": "high",
+      "score": "15.0",
+      "date": "2020-04-27T03:00:00.000+00:00",
+      "suspected_fields": ["Permissão", "Numero do RG", "Assinatura"],
+      "frauds": [
+        {
+          "id": "1",
+          "loan_document_id": "1",
+          "fraud_id": "1",
+          "score": 99,
+          "points": []
+        }
+      ],
+      "comments": [
+        {
+          "id": "1",
+          "user_id": "1",
+          "comment": "lorem ipsum",
+          "created_at": "2020-04-27T03:00:00.000+00:00"
+        }
+      ]
+    }
+  },
+  "dates": {
+    "emission": "2020-04-27T03:00:00.000Z",
+    "received": "2020-04-27T03:00:00.000Z"
+  },
+  "documents": [
+    {
+      "type": "CPF",
+      "number": "123456789"
+    },
+    {
+      "type": "CNH",
+      "number": "123"
+    }
+  ],
+  "external_loan_id": "123456",
+  "full_name": "Luiz Almeida",
+  "loan_type": "pending"
+}
+```
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/loans`
+
+This endpoint will allow you to create a new loan:
+
+## Edit Loan
+
+```shell
+curl --header "Content-Type: application/json" \
+  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imx1aXpocnFhc0BnbWFpbC5jb20iLCJleHAiOjE1ODgwODUzNjZ9.dYvgspmKQCSYGCGnyai5G69MYLobhrr1yHYTUwBhQxw" \
+  --request PATCH \
+  "<%= config[:endpoint] %>/loans/5eaac907855c4c73cc106506"
+```
+
+> It contains some optional fields to work:
+
+```json
+{
+  "loan": {
+    "external_loan_id": "123456",
+    "loan_type": "pending",
+    "full_name": "Luiz Almeida",
+    "documents": [
+      { "type": "CPF", "number": "123456789" },
+      { "type": "CNH", "number": "123" }
+    ],
+    "analysis": {
+      "harpia": {
+        "status": false,
+        "date": "2020-04-27T03:00:00.000+00:00"
+      },
+      "luppa": {
+        "has_been_analyzed": true,
+        "status": "high",
+        "score": "15.0",
+        "date": "2020-04-27T03:00:00.000+00:00",
+        "suspected_fields": ["Permissão", "Numero do RG", "Assinatura"],
+        "frauds": [
+          {
+            "id": "1",
+            "loan_document_id": "1",
+            "fraud_id": "1",
+            "score": 99,
+            "points": [
+              [0, 1],
+              [1, 1],
+              [100, 100]
+            ]
+          }
+        ],
+        "comments": [
+          {
+            "id": "1",
+            "user_id": "1",
+            "comment": "lorem ipsum",
+            "created_at": "2020-04-27T03:00:00.000+00:00"
+          }
+        ]
+      }
+    },
+    "dates": {
+      "emission": "2020-04-27T03:00:00.000Z",
+      "received": "2020-04-27T03:00:00.000Z"
+    }
+  }
+}
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "_id": {
+    "$oid": "5eaac907855c4c73cc106506"
+  },
+  "analysis": {
+    "harpia": {
+      "status": false,
+      "date": "2020-04-27T03:00:00.000+00:00"
+    },
+    "luppa": {
+      "has_been_analyzed": true,
+      "status": "high",
+      "score": "15.0",
+      "date": "2020-04-27T03:00:00.000+00:00",
+      "suspected_fields": ["Permissão", "Numero do RG", "Assinatura"],
+      "frauds": [
+        {
+          "id": "5eaac907855c4c73cc106506",
+          "loan_document_id": "5eaac907855c4c73cc106506",
+          "fraud_id": "5eaac907855c4c73cc106506",
+          "score": 99,
+          "points": []
+        }
+      ],
+      "comments": [
+        {
+          "id": "5eaac907855c4c73cc106506",
+          "user_id": "5eaac907855c4c73cc106506",
+          "comment": "lorem ipsum",
+          "created_at": "2020-04-27T03:00:00.000+00:00"
+        }
+      ]
+    }
+  },
+  "dates": {
+    "emission": "2020-04-27T03:00:00.000Z",
+    "received": "2020-04-27T03:00:00.000Z"
+  },
+  "documents": [
+    {
+      "type": "CPF",
+      "number": "123456789"
+    },
+    {
+      "type": "CNH",
+      "number": "123"
+    }
+  ],
+  "external_loan_id": "123456",
+  "full_name": "Luiz Almeida",
+  "loan_type": "pending"
+}
+```
+
+### HTTP Request
+
+`PATCH <%= config[:endpoint] %>/loans/:id`
+
+This endpoint will allow you to edit a existing loan.
+
+### Query Parameters
+
+| Parameter | Default | Description                     |
+| --------- | ------- | ------------------------------- |
+| id        | 0       | A valid ID for a existing loan. |
+
+# LoanDocuments
+
+## Schema
+
+This is the actual structure for a existing `LoanDocument`:
+
+```json
+{
+  "id": "5eaac907855c4c73cc106506",
+  "type": "CNH",
+  "side": "back",
+  "image": "https://<network>/public/91002910921.jpg",
+  "data": {
+    "number": "000000000",
+    "type": "CNH",
+    "emission_date": "2020-04-27T03:00:00.000Z",
+    "birth_date": "2020-04-27T03:00:00.000Z",
+    "birth_place": "GUARULHOS - SP",
+    "mother_full_name": "Lorem Ipsun",
+    "father_full_name": "Lorem Ipsun"
+  }
+}
+```
+
+## About
+
+The `LoanDocument` entity is a children for [Loans](#loans).
+
+Actually it is not possible to create new loan documents directly.
+
+To create a new loan document, you must send them on the [Creating a new analysis](#creating-a-new-analysis) endpoint.
+
+# LoanDocumentFrauds
+
+## Schema
+
+This is the actual structure for a existing `LoanDocumentFrauds`:
+
+```json
+{
+  "id": "5eaac907855c4c73cc106506",
+  "loan_document_id": "5eaac907855c4c73cc106506",
+  "fraud_id": "5eaac907855c4c73cc106506",
+  "score": 99,
+  "points": [
+    [0, 1],
+    [1, 1],
+    [100, 100]
+  ]
+}
+```
+
+## About
+
+The `LoanDocumentFraud` entity is a children for [LoanDocument](#loan-documents).
+
+Actually it is not possible to create new loan documents directly.
+
+To create a new fraud in a loan document, you must send them on the [Creating a new analysis](#creating-a-new-analysis) endpoint.
+
+# Analysis
+
+## Creating a new analysis
+
+### HTTP Request
+
+`POST <%= config[:endpoint] %>/analysis`
+
+This endpoint will allow you to submit a new analysis.
+
+The analysis must provide a existing loan id in the `loan_id` attribute.
+
+### Required fields
+
+| Parameter | Default | Description                                                                                                                                                |
+| --------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| loan_id   | ""      | The existing loan who the analysis refers to.                                                                                                              |
+| status    | false   | Actual status for the analysis. `false`: invalid document. `true`: Valid document.                                                                         |
+| frauds.id | null    | You must provide a ID for the fraud. You can use a integer auto-increment as ID for each fraud. This ID can be used as reference for the `comments` array. |
+
+### Optional fields
+
+| Parameter            | Default | Description                                                                                                                                                                                                                           |
+| -------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| frauds.points        | null    | Coordinates for the fraud.                                                                                                                                                                                                            |
+| frauds.backend_label | null    | If this fraud belongs to a existing generic fraud, you must provide the `backend_label` for it. If the `backend_label` doesn't exists, it will create a new generic fraud using the `backend_label` and the `label` attribute values. |
+| comments.fraud_id    | null    | Persist a relation between the comment and a existing fraud in the `frauds` array.                                                                                                                                                    |
+
+```json
+{
+  "loan_id": "5eaac907855c4c73cc106506",
+  "status": false, // Estatus da análise da cynthia [false - doc. falso, true - doc. verdadeiro]
+  "frauds": [
+    {
+      "id": 1,
+      "loan_document_id": "5eaac907855c4c73cc106506",
+      "label": "Alinhamento da permisão",
+      "backend_label": "PERMISSION_ALIGNMENT",
+      "points": [
+        [0, 1],
+        [1, 1],
+        [100, 100]
+      ]
+    },
+    {
+      "id": 2,
+      "loan_document_id": "5eaac907855c4c73cc106506",
+      "label": "Fonte Inválida",
+      "backend_label": "INVALID_FONT"
+    },
+    {
+      "id": 3,
+      "loan_document_id": "5eaac907855c4c73cc106506",
+      "label": "Assinatura Inválida",
+      "backend_label": "INVALID_SIGNATURE",
+      "points": [
+        [0, 1],
+        [1, 1],
+        [100, 100]
+      ]
+    }
+  ],
+  "comments": [
+    {
+      "fraud_id": 1,
+      "user_id": "5eaac907855c4c73cc106506",
+      "comment": "lorem ipsum",
+      "date": "2020-04-27T03:00:00.000Z"
+    }
+  ]
+}
+```
+
+# Missing points
+
+1. The API must provide a endpoint to create and delete documents for a existing Loan (`LoanDocument` entity explained above).
+2. We need to define all the business logic inside the analysis endpoint (specially about the behavior in `frauds` and `comments` arrays).
+3. The API must provide the analysis endpoint (it still in development).
+4. We need to define if we'll need DELETE endpoints, to delete any existing content for any entity.
+
+# Environment
+
+## About
+
+The Luppa backend is a typical Ruby on Rails API application.
+
+The source code is available [here]().
+
+You must have Ruby 2.7+ and Rails 6+ installed in your system.
+
+You can use the `Docker` environment available in the source code.
+
+You must copy and paste the `.env.example` to the `.env` file, with all environment variables filled with valid content.
+
+Actually, we are using the MongoDB as database. You must provide the `MONGODB_URI` connection string in the `.env` file.
+
+## Staging
+
+We have a staging environment available in Heroku. It can be used for the front-end development environment.
+
+We are using the MongoDB instance available from the Heroku Addons.
+
+The application is hosted in the @lhas username. Ideally, in the future, it should be migrated to a DOD Vision Heroku account.
+
+We are using a free dyno for this environment, so, probably in the first request in a 60 minutes range, the application will be sleeping (idle).
+
+The next request after the application has been waked up will be faster than the first request.
+
+## Production
+
+The production environment will be deployed locally in the Azure cloud service from the client.
+
+The client will provide a MongoDB instance for us.
+
+The client will use the Docker environment available in the source code to deploy and start the backend.
